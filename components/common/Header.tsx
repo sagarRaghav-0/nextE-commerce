@@ -109,7 +109,7 @@ const Header = () => {
 
           )}
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 md:block">
             <SignedOut >
               <SignInButton mode="modal" forceRedirectUrl="/">
                 <button className="py-2 px-4 cursor-pointer bg-[var(--btn-color)] text-white font-bold hover:bg-lime-800 rounded-full">
@@ -138,6 +138,26 @@ const Header = () => {
         </nav>
 
         {/* Cart + Menu for mobile */}
+        <div className="flex items-center gap-3 md:hidden">
+          <SignedOut >
+            <SignInButton mode="modal" forceRedirectUrl="/">
+              <button className="py-2 px-4 cursor-pointer bg-[var(--btn-color)] text-white font-bold hover:bg-lime-800 rounded-full">
+                Sign In
+              </button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton />
+            <SignOutButton redirectUrl="/" >
+              <button onClick={clearDataOnSignOut} className="py-2 px-4 cursor-pointer bg-red-600 text-white font-bold hover:bg-red-700 rounded-full">
+                Sign Out
+              </button>
+            </SignOutButton>
+          </SignedIn>
+        </div>
+
+
         <div className="flex items-center gap-6 md:hidden">
           <Link href="/cart">
             <div className="relative">

@@ -16,7 +16,7 @@ const About = () => {
 
                 <div className="relative z-10 sm:px-5">
                     <Header />
-                    <div className="text-white text-center md:py-26  py-15  px-6">
+                    <div className="text-white text-center md:py-26  py-20  px-6">
                         <div className="inline-block text-sm font-semibold px-4 py-1  tracking-[0.4em] uppercase">
                             About Us
                         </div>
