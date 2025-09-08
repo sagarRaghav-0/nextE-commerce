@@ -1,5 +1,10 @@
+import CartSync from "@/components/auth/CartSync";
+import ReduxProvider from "@/redux/ReduxProvider";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,12 +28,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+
+    <ClerkProvider>
+      <html lang="en">
+        <head>
+          <Script src="https://checkout.razorpay.com/v1/checkout.js" />
+        </head>
+
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ReduxProvider>
+            <CartSync />
+            {children}
+
+          </ReduxProvider>
+
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
