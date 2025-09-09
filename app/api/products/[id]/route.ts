@@ -39,7 +39,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
 // ================= PATCH Product ==================
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     const id = (await params).id;
-    console.log('id:',id)
+    console.log('id:', id)
 
     try {
         const body = await request.json();

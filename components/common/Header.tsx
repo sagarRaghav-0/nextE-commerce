@@ -109,7 +109,7 @@ const Header = () => {
 
           )}
 
-          <div className="flex items-center gap-3 md:block">
+          <div className=" items-center justify-center gap-3 hidden md:flex">
             <SignedOut >
               <SignInButton mode="modal" forceRedirectUrl="/">
                 <button className="py-2 px-4 cursor-pointer bg-[var(--btn-color)] text-white font-bold hover:bg-lime-800 rounded-full">
