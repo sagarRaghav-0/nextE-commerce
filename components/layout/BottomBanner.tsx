@@ -3,7 +3,7 @@ import Link from 'next/link'
 const BottomBanner = () => {
     return (
         <div className="relative w-full overflow-hidden mb-15">
-            <div className="relative bg-[url('/banners/bottombanner.webp')] bg-no-repeat bg-cover bg-center w-full text-center flex flex-col items-center justify-center text-[#f1f1f1] md:py-24 py-10">
+            <div className="relative bg-[url('/banners/bottomBanner.webp')] bg-no-repeat bg-cover bg-center w-full text-center flex flex-col items-center justify-center text-[#f1f1f1] md:py-24 py-10">
 
                 <div className="absolute inset-0 bg-black opacity-30 z-0"></div>
 
