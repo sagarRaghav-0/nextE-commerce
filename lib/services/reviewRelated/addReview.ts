@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const addNewReview = async (review: { productId: string; reviewText: string }) => {
     try {
-        const res = await axios.post('http://localhost:3000/api/review', review);
+        const res = await axios.post('/api/review', review);
         return res.data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
