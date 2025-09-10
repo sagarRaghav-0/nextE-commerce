@@ -29,7 +29,7 @@ export default function OrdersPage() {
   const [error, setError] = useState<string | null>(null);
 
   const isAdmin = user?.publicMetadata.role === 'admin';
-  const validStatuses: OrderStatus[] = ['pending', 'processing', 'shipped', 'delivered', 'out_for_delivery', 'canceled'];
+  const validStatuses: OrderStatus[] = ['pending', 'processing', 'paid', 'shipped', 'delivered', 'out_for_delivery', 'canceled'];
 
 
   // Fetch orders
@@ -176,10 +176,11 @@ export default function OrdersPage() {
                     )}
                   >
                     <option value="pending">Pending</option>
-                    <option value="processing">Paid</option>
-                    <option value="shipped">Failed</option>
+                    <option value="processing">Processing</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="paid">Paid</option>
                     <option value="delivered">Delivered</option>
-                    <option value="out_for_delivery">Out fro Delivery</option>
+                    <option value="out_for_delivery">Out for Delivery</option>
                     <option value="canceled">Canceled</option>
                   </select>
                 ) : (

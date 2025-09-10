@@ -190,7 +190,13 @@ const Header = () => {
           <Link href="/shop" onClick={toggleMenu} className={isShop ? "text-[var(--btn-color)]" : ""}>Shop</Link>
           <Link href="/about" onClick={toggleMenu} className={pathname === "/about" ? "text-[var(--btn-color)]" : ""}>About</Link>
           <Link href="/contact" onClick={toggleMenu} className={isContact ? "text-[var(--btn-color)]" : ""}>Contact</Link>
-          <Link href="/orders" onClick={toggleMenu} className={isOrders ? "text-[var(--btn-color)]" : ""}>Orders</Link>
+
+          {
+            user && (
+              <Link href="/orders" className={isOrders ? "text-[var(--btn-color)]" : ""}>Orders</Link>
+
+            )
+          }
 
           {isAdmin && (
             <Link href="/dashboard" onClick={toggleMenu} className={pathname === "/dashboard" ? "text-[var(--btn-color)]" : ""}>

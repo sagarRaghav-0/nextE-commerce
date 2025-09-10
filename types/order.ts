@@ -20,7 +20,9 @@ export type OrderStatus =
   | "shipped"
   | "out_for_delivery"
   | "delivered"
-  | "canceled";
+  | "canceled"
+  | "paid"
+  ;
 
 export interface Order {
   id: string; // UUID or DB-generated
