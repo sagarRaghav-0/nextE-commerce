@@ -110,7 +110,7 @@ const Page = () => {
                 onClick={() => handleDelete(product.id)}
                 className="p-2 bg-orange-600 hover:bg-orange-700 text-white rounded-md"
               >
-                <FaTrash size={16} />
+                <FaTrash className='cursor-pointer' size={16} />
               </button>
             </div>
           </div>

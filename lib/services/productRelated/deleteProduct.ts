@@ -4,7 +4,7 @@ export const deleteProducts = async (id: string | undefined) => {
     if (!id) return;
 
     try {
-        const res = await axios.delete(`http://localhost:3000/api/products/${id}`, {
+        const res = await axios.delete(`/api/products/${id}`, {
             headers: { 'Content-Type': 'application/json' },
         });
 

@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const addNewProduct = async (product: Product) => {
     try {
-        const res = await axios.post('http://localhost:3000/api/products', product);
+        const res = await axios.post('/api/products', product);
         return res.data;
     } catch (error) {
         if (axios.isAxiosError(error)) {

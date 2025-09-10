@@ -5,7 +5,6 @@ import BottomBanner from '@/components/layout/BottomBanner';
 import { cartItemsUpload } from '@/lib/services/cartrelated/cartItemsUpload';
 import { deleteCartItem } from '@/lib/services/cartrelated/dbCartDelete';
 import { updateCartItemQuantity } from '@/lib/services/cartrelated/updateQuantity';
-// import { updateCartItemQuantity } from '@/lib/services/cartrelated/updateQuantity';
 import { applyCoupon, clearCoupon, removeFromCart, updateQuantity } from '@/redux/slices/cartslice';
 import { RootState } from '@/redux/store';
 import { CartItem, CartItemsUploadToSupabase } from '@/types/cart';
@@ -50,7 +49,6 @@ const Cart = () => {
     dispatch(removeFromCart(item.id ?? ""));
   };
 
-
   useEffect(() => {
     if (isSignedIn && isLoaded && user) {
       cart.forEach((item) => {
@@ -65,7 +63,6 @@ const Cart = () => {
       });
     }
   }, [isSignedIn, isLoaded, user, cart]);
-
 
   return (
     <>
@@ -99,21 +96,41 @@ const Cart = () => {
                   </div>
                 </div>
 
+                {/* Quantity + Total + Delete */}
                 <div className="flex items-center justify-between w-full sm:w-1/2 gap-4">
-                  <input
-                    type="number"
-                    min={1}
-                    value={item.quantity}
-                    onChange={(e) => {
-                      const newQuantity = parseInt(e.target.value);
-                      dispatch(updateQuantity({ id: item.id ?? "", quantity: newQuantity }));
-                      updateCartItemQuantity(item.id ?? "", newQuantity)
-                    }}
-                    className="w-16 border border-gray-300 rounded-md text-center px-2 py-1"
-                  />
+                  {/* Custom Quantity Control */}
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => {
+                        if (item.quantity > 1) {
+                          const newQuantity = item.quantity - 1;
+                          dispatch(updateQuantity({ id: item.id ?? "", quantity: newQuantity }));
+                          updateCartItemQuantity(item.id ?? "", newQuantity);
+                        }
+                      }}
+                      className="w-8 h-8 flex items-center justify-center rounded-md border border-gray-300 hover:bg-gray-100"
+                    >
+                      –
+                    </button>
+
+                    <span className="w-10 text-center font-medium">{item.quantity}</span>
+
+                    <button
+                      onClick={() => {
+                        const newQuantity = item.quantity + 1;
+                        dispatch(updateQuantity({ id: item.id ?? "", quantity: newQuantity }));
+                        updateCartItemQuantity(item.id ?? "", newQuantity);
+                      }}
+                      className="w-8 h-8 flex items-center justify-center rounded-md border border-gray-300 hover:bg-gray-100"
+                    >
+                      +
+                    </button>
+                  </div>
+
                   <p className="text-gray-700 font-medium">
                     ${(item.price * item.quantity).toFixed(2)}
                   </p>
+
                   <button
                     className="text-red-500 hover:text-red-700 text-2xl cursor-pointer"
                     onClick={() => handleDelete(item)}

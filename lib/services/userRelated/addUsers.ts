@@ -4,7 +4,7 @@ import axios from "axios";
 export const addNewUser = async (users: User) => {
     try {
 
-        await axios.post('http://localhost:3000/api/users', users)
+        await axios.post('/api/users', users)
 
     } catch (error) {
         console.error("❌ Error adding user:", error);

@@ -96,17 +96,23 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
 
     try {
         // Get image path
-        const [row] = await sql`SELECT images FROM products WHERE id = ${id} LIMIT 1`;
-        const imagePath = row?.images;
+        const product = await sql`SELECT images FROM products WHERE id = ${id}`;
+
+        if (product.length === 0) {
+            return new Response(JSON.stringify({ message: "Product not found" }), { status: 404 });
+        }
+
+
+        const imageUrl = product[0].image_url;
 
         // Delete product from DB
         await sql`DELETE FROM products WHERE id = ${id}`;
 
         // Delete image from Supabase storage
-        if (imagePath) {
+        if (imageUrl) {
             const { error: imageDeleteError } = await supabase.storage
                 .from('addproducts') // your Supabase bucket name
-                .remove([imagePath]);
+                .remove([imageUrl]);
 
             if (imageDeleteError) {
                 console.error('Error deleting image from storage:', imageDeleteError);
