@@ -204,14 +204,15 @@ const Shop = () => {
                                     e.stopPropagation();
                                     handleAddToCart({ ...product, quantity: 1 });
                                 }}
-                                className={`cursor-pointer w-full py-3 mt-3 rounded-full font-semibold transition-all disabled:opacity-50 block md:hidden
+                                className={`cursor-pointer w-full py-3 mt-3 rounded-full font-semibold transition-all duration-300 block md:hidden
                                         ${clickedProductId === product.id
-                                        ? "bg-[var(--btn-color)] text-white"
-                                        : "bg-[var(--bbs-color)] text-black hover:bg-[var(--btn-color)] hover:text-white"
+                                        ? "bg-[var(--btn-color)] text-white" // ✅ active state (like hover)
+                                        : "bg-[var(--bbs-color)] text-black active:bg-[var(--btn-color)] active:text-white"
                                     }`}
                             >
                                 {clickedProductId === product.id ? "Added To Cart" : "Add To Cart"}
                             </button>
+
 
 
                         </div>

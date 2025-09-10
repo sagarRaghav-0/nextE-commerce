@@ -52,7 +52,7 @@ const About = () => {
                             customers with the highest quality
                         </h2>
                         <p className="text-gray-600 leading-relaxed">
-                            Urban Jungle Co. was founded in 1960 by a group of plant enthusiasts who
+                            E Com Co. was founded in 1960 by a group of plant enthusiasts who
                             recognized the positive impact that plants can have on our lives. Whether
                             it’s purifying the air, reducing stress, or simply adding a touch of beauty to
                             your environment, plants are more than just decoration—they’re a lifestyle.
@@ -69,14 +69,14 @@ const About = () => {
                         </p>
                         <div className="flex items-center gap-3">
                             <Image
-                                src="/testimonial/testimonial.png"
+                                src="/ceo/1.webp"
                                 alt="Karen Lynn"
                                 width={50}
                                 height={50}
                                 className="rounded-full"
                             />
                             <div>
-                                <p className="font-semibold text-gray-800">Karen Lynn</p>
+                                <p className="font-semibold text-gray-800">Rajat</p>
                                 <p className="text-sm text-gray-500">CEO & Co-founder @ Company</p>
                             </div>
                         </div>

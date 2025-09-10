@@ -27,7 +27,7 @@ const Contact = () => {
             <ContactSection />
 
             <div className='bg-[var(--bbs-color)]  flex flex-col items-center space-y-5 py-10 md:py-20 '>
-                <h2>Follow us @Ekamya Co.</h2>
+                <h2>Follow us @E Com Co.</h2>
                 <div className='flex gap-10 '>
                     <FaFacebook size={40} />
                     <FaInstagram size={40} />
