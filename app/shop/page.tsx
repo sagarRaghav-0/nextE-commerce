@@ -183,8 +183,8 @@ const Shop = () => {
                             </div>
                             <Image
                                 src={product.images}
-                                width={270}
-                                height={270}
+                                width={200}
+                                height={200}
                                 alt={product.name}
                                 className="rounded-xl"
                             />
@@ -194,21 +194,25 @@ const Shop = () => {
                                 {product.discount_price && product.discount_price > 0 ? (
                                     <span className="text-gray-400 line-through mr-2">₹{product.price}</span>
                                 ) : null}
-                                <span className="font-semibold text-gray-800">
+                                <span className="font-semibold  text-gray-800">
                                     ₹{product.discount_price && product.discount_price > 0 ? product.discount_price : product.price}
                                 </span>
                             </p>
                             <button
                                 onClick={(e) => {
-                                    e.preventDefault(); // stop navigation
+                                    e.preventDefault();
                                     e.stopPropagation();
-                                    handleAddToCart({ ...product, quantity: 1 })
-                                }
-                                }
-                                className="cursor-pointer w-full bg-[var(--bbs-color)] hover:bg-[var(--btn-color)] hover:text-white text-black py-3 mt-3 rounded-full font-semibold transition-all disabled:opacity-50 block md:hidden"
+                                    handleAddToCart({ ...product, quantity: 1 });
+                                }}
+                                className={`cursor-pointer w-full py-3 mt-3 rounded-full font-semibold transition-all disabled:opacity-50 block md:hidden
+                                        ${clickedProductId === product.id
+                                        ? "bg-[var(--btn-color)] text-white"
+                                        : "bg-[var(--bbs-color)] text-black hover:bg-[var(--btn-color)] hover:text-white"
+                                    }`}
                             >
                                 {clickedProductId === product.id ? "Added To Cart" : "Add To Cart"}
                             </button>
+
 
                         </div>
                     </Link>
