@@ -15,6 +15,7 @@ import Testimonials from "@/components/layout/Testimonials";
 import TrendingProducts from "@/components/layout/TrendingProducts";
 
 export default function Home() {
+
   return (
     <div className="w-full overflow-x-hidden">
       {/* Banner Section */}
@@ -24,10 +25,7 @@ export default function Home() {
           src="/banners/home.webp"
           alt="Home Banner"
           fill
-          quality={100}
-          unoptimized
           className="object-cover"
-          priority
         />
 
         {/* Overlay */}
