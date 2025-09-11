@@ -17,6 +17,7 @@
     "emailjs-com": "^3.2.0",
     "lodash": "^4.17.21",
     "next": "15.4.5",
+    "next-pwa": "^5.6.0",
     "postgres": "^3.4.7",
     "razorpay": "^2.9.6",
     "react": "19.1.0",
