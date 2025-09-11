@@ -36,7 +36,8 @@ const Checkout = () => {
 
     useEffect(() => {
         if (!isLoaded) return;
-        if (!isSignedIn) router.replace('/sign-in?redirectUrl=/checkout');
+        // if (!isSignedIn) router.replace('/sign-in?redirect_url=/checkout');
+
     }, [isLoaded, isSignedIn, router]);
 
     const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);

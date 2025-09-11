@@ -50,7 +50,7 @@ export default function Home() {
             </p>
 
             <Link href="/shop">
-              <button className=" bg-[var(--bbs-color)] hover:bg-[#f5ebdd] text-black hover:text-[#7c5c3f] font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-[0_0_20px_#f5ebdd] transition-all duration-300 tracking-wider uppercase">
+              <button className=" bg-[var(--bbs-color)] hover:bg-[#f5ebdd] text-black hover:text-[#7c5c3f] font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-[0_0_20px_#f5ebdd] transition-all duration-300 tracking-wider uppercase cursor-pointer">
                 Shop Now
               </button>
             </Link>
