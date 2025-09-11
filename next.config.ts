@@ -10,8 +10,7 @@ const nextConfig: NextConfig = {
 };
 
 export default withPWA({
-  dest: "public", // service worker + manifest will be stored here
+  dest: "public", // 👈 service worker + manifest will be stored here
   register: true,
   skipWaiting: true,
-  disable: process.env.NODE_ENV === "development", // 👈 disable PWA in dev
 })(nextConfig);
