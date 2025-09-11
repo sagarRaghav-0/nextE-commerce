@@ -25,6 +25,8 @@ export default function Home() {
           src="/banners/home.webp"
           alt="Home Banner"
           fill
+          unoptimized
+          quality={100}
           className="object-cover"
         />
 
