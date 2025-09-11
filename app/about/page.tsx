@@ -38,6 +38,7 @@ const About = () => {
                         alt="About Plants"
                         fill
                         className="object-cover"
+                        quality={100}
                         sizes="(max-width: 768px) 100vw, 50vw"
                         priority
                     />

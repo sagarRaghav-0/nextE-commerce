@@ -150,7 +150,6 @@ const Shop = () => {
                         className="text-gray-600 w-full block p-4 border-none focus:outline-none focus:ring-0 bg-white"
                     >
                         <option value="">Default sorting</option>
-                        <option value="popularity">Sort by popularity</option>
                         <option value="rating">Sort by average rating</option>
                         <option value="latest">Sort by latest</option>
                         <option value="lowToHigh">Sort by price: low to high</option>
