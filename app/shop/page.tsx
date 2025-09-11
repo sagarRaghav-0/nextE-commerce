@@ -163,8 +163,7 @@ const Shop = () => {
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-10 md:gap-10 md:px-10 sm:px-8 px-4 py-10">
                 {sortedProducts.slice(0, visibleCount).map((product: Product) => (
                     <Link key={product.id} href={`/shop/productdetail/${product.id}`} onClick={() => handleSingleProduct(product)}>
-                        <div className="group relative w-[45%] sm:w-[48%] md:w-[30%] lg:w-[22%] flex flex-col items-center  text-center 
-              bg-[#f9f9f9] rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4">
+                        <div className="flex flex-col items-center justify-center p-6 rounded-2xl shadow-sm relative group h-full">
                             <div className="absolute top-3 right-3 transition-opacity duration-300 z-10 hidden md:block">
                                 {clickedProductId === product.id ? (
                                     <span className="text-green-600 text-xl">✔</span>
