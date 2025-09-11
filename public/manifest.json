@@ -1,8 +1,8 @@
 {
     "name": "Next E-Commerce",
     "short_name": "E-Shop",
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#f3f3f3",
+    "background_color": "#b8bba3",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",

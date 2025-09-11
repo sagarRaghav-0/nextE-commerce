@@ -10,7 +10,20 @@ const nextConfig: NextConfig = {
 };
 
 export default withPWA({
-  dest: "public", // 👈 service worker + manifest will be stored here
+  dest: "public",
   register: true,
   skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+
+  // 👇 Cache everything
+  runtimeCaching: [
+    {
+      urlPattern: /.*/i, // match all URLs
+      handler: "NetworkFirst", // try network, fallback to cache
+      options: {
+        cacheName: "all-cache",
+        expiration: { maxEntries: 200, maxAgeSeconds: 30 * 24 * 60 * 60 }, // 30 days
+      },
+    },
+  ],
 })(nextConfig);
