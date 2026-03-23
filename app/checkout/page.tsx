@@ -52,7 +52,7 @@ const Checkout = () => {
 
         const orderData: Order = {
             id: '',
-            billingDetails: formData,
+            billing_details: formData,
             items: cart,
             subtotal,
             discount,

@@ -1,10 +1,12 @@
 'use client';
+import { deleteOrders } from '@/lib/services/orderRelated/deleteOrderAdmin';
 import { showOrder } from '@/lib/services/orderRelated/showOrder';
 import { Order, OrderStatus } from '@/types/order';
 import { useUser } from '@clerk/nextjs';
 import clsx from 'clsx';
 import Image from "next/image";
 import { useEffect, useState } from 'react';
+import { FaTrash } from 'react-icons/fa';
 import { FiPackage } from 'react-icons/fi';
 
 const getStatusColor = (status: string) => {
@@ -80,6 +82,15 @@ export default function OrdersPage() {
     }
   };
 
+  const handleDelete = async (id: string | undefined) => {
+    if (!id) return;
+    const deleteO = await deleteOrders(id);
+
+    if (deleteO) {
+      setOrders(prev => prev.filter(order => order.id !== id));
+    }
+  }
+
 
   if (loading) return <p className="p-6 text-center">Loading...</p>;
 
@@ -144,14 +155,14 @@ export default function OrdersPage() {
               {/* Middle: Customer Info with full address */}
               <div className="basis-[25%] whitespace-pre-wrap">
                 <p className="font-medium text-gray-800">
-                  {order.billingDetails?.firstName} {order.billingDetails?.lastName}
+                  {order.billing_details?.firstName} {order.billing_details?.lastName}
                 </p>
                 <p className="text-sm text-gray-500 leading-snug">
-                  {order.billingDetails?.address1}
-                  {order.billingDetails?.address2 ? `, ${order.billingDetails.address2}` : ''},<br />
-                  {order.billingDetails?.city}, {order.billingDetails?.state} {order.billingDetails?.zip}
+                  {order.billing_details?.address1}
+                  {order.billing_details?.address2 ? `, ${order.billing_details.address2}` : ''},<br />
+                  {order.billing_details?.city}, {order.billing_details?.state} {order.billing_details?.zip}
                   {'\n'}
-                  {order.billingDetails?.phone}
+                  {order.billing_details?.phone}
                 </p>
               </div>
 
@@ -188,6 +199,13 @@ export default function OrdersPage() {
                     Payment: {order.status?.charAt(0).toUpperCase() + order.status.slice(1)}
                   </p>
                 )}
+
+                <button
+                  onClick={() => handleDelete(order.id)}
+                  className="p-2 bg-orange-600 hover:bg-orange-700 text-white rounded-md"
+                >
+                  <FaTrash className='cursor-pointer' size={16} />
+                </button>
               </div>
             </div>
           </div>

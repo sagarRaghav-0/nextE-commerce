@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { FiCheckSquare, FiList, FiPlusCircle } from 'react-icons/fi';
+import { FiCheckSquare, FiList, FiPlusCircle, FiUser } from 'react-icons/fi';
 
 const AdminSideBar = () => {
     const pathname = usePathname();
@@ -61,7 +61,7 @@ const AdminSideBar = () => {
                     <span>{orders}</span>
                 </Link>
                 <Link href="/dashboard/users" className={`flex items-center gap-3 px-6 py-4 ${pathname === '/dashboard/users' ? ' bg-[var(--bbs-color)] border-r-4 border-[var(--btn-color)]  text-gray-800 font-medium' : 'hover:bg-gray-50 text-gray-700'}`}>
-                    <FiCheckSquare className="text-xl" />
+                    <FiUser className="text-xl" />
                     <span>{users}</span>
                 </Link>
             </div>

@@ -75,7 +75,7 @@ const AddProduct = () => {
       const result = await addNewProduct(productToSend);
       setUpload(false);
       if (result && result.success) {
-        console.log('Product added successfully!');
+        console.log('✅ Product added successfully!');
         setProduct({
           id: '',
           name: '',
@@ -111,7 +111,7 @@ const AddProduct = () => {
             <Image
               src={previewUrl}
               alt="Preview"
-              width={500}
+              width={500}   // give fixed dimensions
               height={500}
               className="w-full h-full object-contain"
             />

@@ -55,7 +55,7 @@ export async function POST(request: Request) {
 
         const body = await request.json();
         const {
-            billingDetails,
+            billing_details,
             items,
             subtotal,
             discount,
@@ -75,7 +75,7 @@ export async function POST(request: Request) {
             )
             VALUES (
                 ${userId}, 
-                ${billingDetails}::jsonb, 
+                ${billing_details}::jsonb, 
                 ${items}::jsonb, 
                 ${subtotal}, 
                 ${discount}, 

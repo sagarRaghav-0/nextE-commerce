@@ -26,7 +26,7 @@ export type OrderStatus =
 
 export interface Order {
   id: string; // UUID or DB-generated
-  billingDetails: BillingDetails;
+  billing_details: BillingDetails;
   items: CartItem[]; // Already defined in your cart types
   subtotal?: number,
   discount?: number; // for coupon (if any)

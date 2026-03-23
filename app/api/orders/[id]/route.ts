@@ -72,3 +72,41 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
 }
 
 
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+
+    const id = (await params).id;
+
+    console.log("order ID to delete:", id);
+
+    try {
+        const deleted = await sql`
+DELETE FROM orders 
+WHERE id=${id}
+RETURNING *
+`;
+
+        if (deleted.length === 0) {
+            return new Response(JSON.stringify({ message: "Order not found" }), {
+                status: 404,
+                headers: { "Content-Type": "application/json" }
+            });
+        }
+
+
+        return new Response(JSON.stringify({ message: 'order deleted successfully' }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+
+
+    }
+    catch (err) {
+        console.error('Unexpected server error:', err);
+        return new Response(JSON.stringify({ message: 'Server error', err }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }
+
+}
