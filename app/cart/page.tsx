@@ -26,13 +26,12 @@ const Cart = () => {
   console.log("user Id:", user?.id);
   console.log("cartItems:", cart);
 
-  // ✅ Subtotal + Total calculation
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const total = subtotal - discount;
 
   const handleApplyCoupon = () => {
     if (couponInput.trim().toLowerCase() === "rajat") {
-      const discountAmount = subtotal * 0.2; // 20% off
+      const discountAmount = subtotal * 0.2;
       dispatch(applyCoupon({ code: "rajat", discount: discountAmount }));
     } else {
       alert("❌ Invalid coupon code");
@@ -92,7 +91,7 @@ const Cart = () => {
                     <h2 className="font-semibold text-[var(--btn-color)] tracking-wide">
                       {item.name}
                     </h2>
-                    <p className="text-sm text-gray-500">${item.price}</p>
+                    <p className="text-sm text-gray-500">₹{item.price}</p>
                   </div>
                 </div>
 
@@ -128,7 +127,7 @@ const Cart = () => {
                   </div>
 
                   <p className="text-gray-700 font-medium">
-                    ${(item.price * item.quantity).toFixed(2)}
+                    ₹{(item.price * item.quantity).toFixed(2)}
                   </p>
 
                   <button
@@ -145,7 +144,6 @@ const Cart = () => {
 
         {/* Coupon & Totals */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Coupon Input */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <input
               type="text"
@@ -177,19 +175,19 @@ const Cart = () => {
             <h2 className="text-xl font-semibold mb-4 tracking-wide">Cart Totals</h2>
             <div className="flex justify-between mb-2">
               <span>Subtotal</span>
-              <span>${subtotal.toFixed(2)}</span>
+              <span>₹{subtotal.toFixed(2)}</span>
             </div>
 
             {discount > 0 && (
               <div className="flex justify-between mb-2 text-green-600 font-medium">
                 <span>Coupon ({coupon})</span>
-                <span>- ${discount.toFixed(2)}</span>
+                <span>- ₹{discount.toFixed(2)}</span>
               </div>
             )}
 
             <div className="flex justify-between mb-6 border-t pt-2 font-semibold">
               <span>Total</span>
-              <span>${total.toFixed(2)}</span>
+              <span>₹{total.toFixed(2)}</span>
             </div>
 
             <Link href="/checkout">

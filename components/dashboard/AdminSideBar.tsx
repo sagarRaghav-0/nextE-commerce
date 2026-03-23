@@ -33,10 +33,10 @@ const AdminSideBar = () => {
 
         };
 
-        handleResize(); // Set initial
-        window.addEventListener('resize', handleResize); // Add listener
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
-        return () => window.removeEventListener('resize', handleResize); // Cleanup
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     return (

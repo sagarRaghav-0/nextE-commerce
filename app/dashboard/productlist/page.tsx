@@ -117,7 +117,7 @@ const Page = () => {
         ))}
       </div>
 
-      {/* 📱 Mobile Layout */}
+      {/*  Mobile Layout */}
       <div className="md:hidden space-y-4">
         {products.map((product) => (
           <div key={product.id} className="border rounded-lg p-4 shadow-sm bg-white">

@@ -1,4 +1,3 @@
-// lib/services/validation.ts
 import { Product } from '@/types/product';
 
 export function validation(product: Product): { isValid: boolean; message?: string } {

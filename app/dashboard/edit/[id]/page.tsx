@@ -79,7 +79,7 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
         setUpload(true);
 
         try {
-            let imageUrl: string = previewUrl ?? ""; // fallback to empty string if null
+            let imageUrl: string = previewUrl ?? "";
             if (isImage) {
                 const uploaded = await uploadImage(isImage);
                 if (!uploaded) {
@@ -90,10 +90,8 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
                 imageUrl = uploaded;
             }
 
-            // Prepare data
             const productToSend = { ...product, images: imageUrl, id };
 
-            // Send to backend
             const result = await updateProduct(productToSend);
             console.log("Sending product data:", productToSend);
 
@@ -175,8 +173,8 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
                         <Image
                             src={previewUrl}
                             alt="Preview"
-                            width={500} // required
-                            height={500} // required
+                            width={500}
+                            height={500}
                             className="w-full h-full object-contain transition duration-200"
                         />
                     ) : (

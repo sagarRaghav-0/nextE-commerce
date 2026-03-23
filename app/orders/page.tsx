@@ -17,14 +17,12 @@ const OrdersPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    // Redirect to login if user is not signed in
     useEffect(() => {
         if (isLoaded && !isSignedIn) {
             router.replace('/sign-in?redirectUrl=/orders');
         }
     }, [isLoaded, isSignedIn, router]);
 
-    // Fetch orders when user is signed in
     useEffect(() => {
         if (!isLoaded || !isSignedIn) return;
 
@@ -44,7 +42,7 @@ const OrdersPage = () => {
                             ...item,
                             price: Number(item.price),
                             quantity: Number(item.quantity),
-                            images: item.images, // keep images as is
+                            images: item.images,
                         })),
                     }));
 
@@ -74,7 +72,6 @@ const OrdersPage = () => {
             <div className="p-8 md:p-16">
                 <h1 className="text-3xl font-bold mb-8">My Orders</h1>
 
-                {/* All states handled here */}
                 {!isLoaded || loading ? (
                     <p className="p-6 text-center">Loading...</p>
                 ) : error ? (
@@ -92,7 +89,6 @@ const OrdersPage = () => {
                                 key={order.id}
                                 className="border rounded-lg shadow p-6 bg-white hover:shadow-md transition"
                             >
-                                {/* Order Header */}
                                 <div className="flex justify-between items-center border-b pb-3 mb-3">
                                     <div>
                                         <p className="font-semibold">Order #{order.id.slice(0, 8)}</p>
@@ -103,7 +99,6 @@ const OrdersPage = () => {
 
                                     </div>
 
-                                    {/* Status Badge */}
                                     <span
                                         className={`px-3 py-1 text-sm rounded-full font-medium ${order.status === 'delivered'
                                             ? 'bg-green-100 text-green-700'
@@ -116,7 +111,6 @@ const OrdersPage = () => {
                                     </span>
                                 </div>
 
-                                {/* Order Items */}
                                 <div className="divide-y">
                                     {order.items.map((item) => (
                                         <div
@@ -145,7 +139,6 @@ const OrdersPage = () => {
                                     ))}
                                 </div>
 
-                                {/* Total */}
                                 <div className="flex justify-between mt-4 font-semibold">
                                     <span>Total</span>
                                     <span>₹{order.total.toFixed(2)}</span>

@@ -3,12 +3,12 @@ import axios from "axios";
 
 export const cartItemsUpload = async (
   payload: CartItemsUploadToSupabase,
-  options?: { overwrite?: boolean }   // ✅ extra argument
+  options?: { overwrite?: boolean }
 ) => {
   try {
     const res = await axios.post("/api/cartitems", {
       ...payload,
-      overwrite: options?.overwrite ?? false, // ✅ attach overwrite flag
+      overwrite: options?.overwrite ?? false,
     });
 
     console.log("comes from cartItemsUpload:", res.data);

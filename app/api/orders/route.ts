@@ -22,7 +22,6 @@ export async function GET() {
             { status: 200, headers: { "Content-Type": "application/json" } }
         );
     } catch (e: unknown) {
-        // Default user-friendly message
         let errorMessage = "Something went wrong while fetching your orders. Please try again.";
 
         if (e instanceof Error) {
@@ -31,14 +30,12 @@ export async function GET() {
             } else if (e.message.includes("connection")) {
                 errorMessage = "Database connection failed. Please try again later.";
             } else {
-                errorMessage = e.message; // fallback to actual error
+                errorMessage = e.message;
             }
         }
 
-        // Log full error for debugging
         console.error("❌ GET /api/orders error:", e);
 
-        // Return structured JSON
         return new Response(
             JSON.stringify({ error: errorMessage }),
             { status: 500, headers: { "Content-Type": "application/json" } }

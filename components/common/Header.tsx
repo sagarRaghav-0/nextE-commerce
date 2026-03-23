@@ -137,6 +137,9 @@ const Header = () => {
           </Link>
         </nav>
 
+
+
+
         {/* Cart + Menu for mobile */}
         <div className="flex items-center gap-3 md:hidden">
           <SignedOut >

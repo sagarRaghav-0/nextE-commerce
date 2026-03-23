@@ -7,7 +7,7 @@ interface ReviewState {
 }
 
 const initialState: ReviewState = {
-    reviews: loadReviewFromStorage(), // ✅ load from storage on init
+    reviews: loadReviewFromStorage(),
 };
 
 const reviewSlice = createSlice({
@@ -16,11 +16,11 @@ const reviewSlice = createSlice({
     reducers: {
         addReview: (state, action: PayloadAction<Review>) => {
             state.reviews.push(action.payload);
-            saveReviewToStorage(state.reviews); // ✅ save reviews
+            saveReviewToStorage(state.reviews);
         },
         removeReview: (state, action: PayloadAction<string>) => {
             state.reviews = state.reviews.filter(item => item.id !== action.payload);
-            saveReviewToStorage(state.reviews); // ✅ clear in storage too
+            saveReviewToStorage(state.reviews);
         },
 
 

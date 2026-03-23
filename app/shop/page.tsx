@@ -73,7 +73,6 @@ const Shop = () => {
 
     const handleSingleProduct = (item: Product) => {
         dispatch(clickedProduct({ ...item }));
-        // setClickedProductId(item.id);   
         console.log(item)
     };
 
@@ -170,9 +169,9 @@ const Shop = () => {
                                 ) : (
                                     <FaShoppingBag
                                         onClick={(e) => {
-                                            e.preventDefault(); // stop navigation
+                                            e.preventDefault();
                                             e.stopPropagation();
-                                            handleAddToCart(product); // ✅ pass the product
+                                            handleAddToCart(product);
                                         }}
                                         size={24}
                                         className="text-gray-700 opacity-0 group-hover:opacity-100 cursor-pointer"
@@ -205,7 +204,7 @@ const Shop = () => {
                                 }}
                                 className={`cursor-pointer w-full py-3 mt-3 rounded-full font-semibold transition-all duration-300 block md:hidden
                                         ${clickedProductId === product.id
-                                        ? "bg-[var(--btn-color)] text-white" // ✅ active state (like hover)
+                                        ? "bg-[var(--btn-color)] text-white"
                                         : "bg-[var(--bbs-color)] text-black active:bg-[var(--btn-color)] active:text-white"
                                     }`}
                             >

@@ -8,14 +8,11 @@ const Header: React.FC = () => {
     return (
         <>
             <div className="flex px-5 md:px-10 my-5 items-center justify-between">
-                {/* Logo / Brand */}
                 <Link href="/" className="text-xl font-bold tracking-wide">
                     Ekamya
                 </Link>
 
-                {/* Auth Buttons */}
                 <div className="flex items-center gap-4">
-                    {/* Signed out */}
                     <SignedOut>
                         <SignInButton
                             mode="modal"
@@ -27,11 +24,9 @@ const Header: React.FC = () => {
                         </SignInButton>
                     </SignedOut>
 
-                    {/* Signed in */}
                     <SignedIn>
                         <UserButton />
                         <SignOutButton redirectUrl="/">
-                            {/* 👇 Only ONE child element */}
                             <button className="py-2 px-4 cursor-pointer bg-red-600 text-white font-bold hover:bg-red-700 rounded-full">
                                 Sign Out
                             </button>

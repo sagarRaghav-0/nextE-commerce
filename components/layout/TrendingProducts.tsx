@@ -54,7 +54,7 @@ const TrendingProducts = () => {
     const item: CartItem = {
       ...product,
       productId: product.id ?? "",
-      quantity: 1, // you can also add a state for quantity input
+      quantity: 1,
     };
 
     dispatch(addToCart(item));
@@ -66,7 +66,6 @@ const TrendingProducts = () => {
     console.log(item)
   };
 
-  // Dynamic star renderer with half-star support
   const getStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => {
       const starValue = i + 1;
@@ -82,17 +81,12 @@ const TrendingProducts = () => {
 
   const handleSingleProduct = (item: Product) => {
     dispatch(clickedProduct(item));
-    // setClickedProductId(item.id);   
     console.log("data from handle Single Product :", item)
   };
 
   useEffect(() => {
     fetchProducts();
   }, []);
-
-  // if (loading) {
-  //   return
-  // }
 
   return (
     <div className="mb-20 px-4">
@@ -159,7 +153,7 @@ const TrendingProducts = () => {
                   }}
                   className={`cursor-pointer w-full py-3 mt-3 rounded-full font-semibold transition-all duration-300 block md:hidden
                                         ${clickedProductId === product.id
-                      ? "bg-[var(--btn-color)] text-white" // ✅ active state (like hover)
+                      ? "bg-[var(--btn-color)] text-white"
                       : "bg-[var(--bbs-color)] text-black active:bg-[var(--btn-color)] active:text-white"
                     }`}
                 >

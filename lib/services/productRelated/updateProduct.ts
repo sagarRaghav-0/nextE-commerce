@@ -28,7 +28,6 @@ export const updateProduct = async (
         let message = "Unknown error";
 
         if (axios.isAxiosError(error)) {
-            // AxiosError gives access to response data safely
             message = error.response?.data?.message || error.message;
         }
 

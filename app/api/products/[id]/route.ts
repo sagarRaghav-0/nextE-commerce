@@ -111,7 +111,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
         // Delete image from Supabase storage
         if (imageUrl) {
             const { error: imageDeleteError } = await supabase.storage
-                .from('addproducts') // your Supabase bucket name
+                .from('addproducts')
                 .remove([imageUrl]);
 
             if (imageDeleteError) {

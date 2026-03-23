@@ -13,7 +13,6 @@ export const showOrder = async (): Promise<ShowOrderResponse> => {
 
         console.log("✅ Orders fetched:", res.data);
 
-        // Always return { success: true, data: [...] }
         return {
             success: true,
             data: res.data as Order[],

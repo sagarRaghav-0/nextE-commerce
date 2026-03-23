@@ -15,15 +15,14 @@ const CartSync = () => {
     const hasSyncedOnLogin = useRef(false);
     const prevUserId = useRef<string | null>(null);
 
-    // 🔹 Reset sync flag if user changes
     useEffect(() => {
         if (user?.id !== prevUserId.current) {
-            hasSyncedOnLogin.current = false; // allow fresh sync
+            hasSyncedOnLogin.current = false;
             prevUserId.current = user?.id || null;
         }
     }, [user?.id]);
 
-    // 🔹 On login: load DB cart OR upload guest cart
+
     useEffect(() => {
         const syncCartOnLogin = async () => {
             if (!isSignedIn || !isLoaded || !user || hasSyncedOnLogin.current) return;
@@ -51,7 +50,7 @@ const CartSync = () => {
         syncCartOnLogin();
     }, [isSignedIn, isLoaded, user?.id]);
 
-    // 🔹 When cart changes locally → sync changes to DB
+
     useEffect(() => {
         const syncCartChanges = async () => {
             if (!isSignedIn || !isLoaded || !user) return;

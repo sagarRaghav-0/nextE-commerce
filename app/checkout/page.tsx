@@ -51,14 +51,14 @@ const Checkout = () => {
         e.preventDefault();
 
         const orderData: Order = {
-            id: '', // backend can generate
+            id: '',
             billingDetails: formData,
             items: cart,
             subtotal,
             discount,
             total,
             userId: isSignedIn ? user?.id : undefined,
-            created_at: '', // backend sets
+            created_at: '',
             status: "pending",
         };
 
@@ -316,7 +316,7 @@ const Checkout = () => {
                                 >
                                     {loading ? 'Placing Order...' : 'Place order'}
                                 </button>
-                                {/* <PaymentButton /> */}
+
                             </div>
                         </div>
                     </div>

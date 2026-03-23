@@ -14,7 +14,6 @@ export const uploadImage = async (file: File): Promise<string | null> => {
     return null;
   }
 
-  // Get public URL (no error field returned anymore)
   const { data: publicUrlData } = supabase
     .storage
     .from("addproducts")

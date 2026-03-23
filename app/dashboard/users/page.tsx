@@ -8,7 +8,6 @@ interface User {
     username: string;
     email: string;
     pass: string;
-    // Add any other columns your table has
 }
 
 const Users = () => {
@@ -18,7 +17,7 @@ const Users = () => {
 
     const fetchUsers = async () => {
         try {
-            const res = await fetch('/api/users'); // Make sure this matches your route
+            const res = await fetch('/api/users');
             if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
             const data: User[] = await res.json();
             setUsers(data);

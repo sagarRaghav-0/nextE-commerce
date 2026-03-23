@@ -121,8 +121,8 @@ export default function OrdersPage() {
                         <Image
                           src={item.images || "/placeholder.png"}
                           alt={item.name}
-                          width={48}   // w-12 = 48px
-                          height={48}  // h-12 = 48px
+                          width={48}
+                          height={48}
                           className="rounded-md object-cover"
                         />
                         <div>

@@ -5,7 +5,7 @@ export async function deleteCartItem(productId?: string) {
         body: productId ? JSON.stringify({ productId }) : undefined,
         // credentials: "include",
 
-        // ✅ if no productId → clears all items
+
     });
 
     const data = await res.json();

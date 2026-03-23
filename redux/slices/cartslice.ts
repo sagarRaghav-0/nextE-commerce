@@ -6,14 +6,12 @@ interface CartState {
     cart: CartItem[];
     coupon: string | null;
     discount: number;
-    // skipUpload?: boolean;
 }
 
 const initialState: CartState = {
     cart: loadCartFromStorage(),
     coupon: null,
     discount: 0,
-    // skipUpload: false,
 };
 
 const cartSlice = createSlice({

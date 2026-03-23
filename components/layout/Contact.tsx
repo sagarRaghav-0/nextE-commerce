@@ -23,7 +23,7 @@ const ContactSection = () => {
                 (result) => {
                     console.log(result.text);
                     alert("✅ Message sent successfully!");
-                    form.current?.reset(); // clear form
+                    form.current?.reset();
                 },
                 (error) => {
                     console.error(error.text);

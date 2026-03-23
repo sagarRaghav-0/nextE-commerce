@@ -56,11 +56,11 @@ export async function POST(request: Request) {
       is_trending,
       is_available,
       quantity,
-      overwrite,   // ✅ new flag from frontend
+      overwrite,   // new flag from frontend
     } = body;
 
     if (overwrite) {
-      // 🔄 Replace quantity with localStorage value
+      //  Replace quantity with localStorage value
       await sql`
         INSERT INTO cart_items ("userId", "productId", name, description, price, discount_price, category, images, stock, rating, is_trending, is_available, quantity)
         VALUES (${userId}, ${productId}, ${name}, ${description}, ${price}, ${discount_price}, ${category}, ${images}, ${stock}, ${rating}, ${is_trending}, ${is_available}, ${quantity})
@@ -68,7 +68,7 @@ export async function POST(request: Request) {
         DO UPDATE SET quantity = EXCLUDED.quantity
       `;
     } else {
-      // ➕ Default behavior → increment quantity
+      //  Default behavior → increment quantity
       await sql`
         INSERT INTO cart_items ("userId", "productId", name, description, price, discount_price, category, images, stock, rating, is_trending, is_available, quantity)
         VALUES (${userId}, ${productId}, ${name}, ${description}, ${price}, ${discount_price}, ${category}, ${images}, ${stock}, ${rating}, ${is_trending}, ${is_available}, ${quantity})
@@ -93,7 +93,7 @@ export async function POST(request: Request) {
       } else if (e.message.includes("syntax error")) {
         errorMessage = "There was a problem with the database query.";
       } else {
-        errorMessage = e.message; // fallback to system error
+        errorMessage = e.message;
       }
     }
 
@@ -130,7 +130,7 @@ export async function DELETE(request: Request) {
     const { productId } = body as { productId?: string };
 
     if (productId) {
-      // 🔹 Delete single item
+      //  Delete single item
       await sql`
         DELETE FROM cart_items
         WHERE "userId" = ${userId} AND "productId" = ${productId}
@@ -141,7 +141,7 @@ export async function DELETE(request: Request) {
         { status: 200, headers: { "Content-Type": "application/json" } }
       );
     } else {
-      // 🔹 Delete all items for this user
+      //  Delete all items for this user
       await sql`
         DELETE FROM cart_items
         WHERE "userId" = ${userId}
@@ -153,24 +153,20 @@ export async function DELETE(request: Request) {
       );
     }
   } catch (e: unknown) {
-    // Default error message for the user
     let errorMessage = "Something went wrong while deleting items. Please try again.";
 
     if (e instanceof Error) {
-      // Check for common database issues and give friendly messages
       if (e.message.includes("foreign key")) {
         errorMessage = "Cannot delete this item due to database restrictions.";
       } else if (e.message.includes("syntax error")) {
         errorMessage = "There was a problem with the database query.";
       } else {
-        errorMessage = e.message; // fallback to actual error
+        errorMessage = e.message;
       }
     }
 
-    // Log full error for debugging
     console.error("❌ DELETE /api/cartitems error:", e);
 
-    // Return structured JSON so frontend can show a toast or message
     return new Response(
       JSON.stringify({ error: errorMessage }),
       { status: 500, headers: { "Content-Type": "application/json" } }
@@ -203,24 +199,21 @@ export async function PATCH(request: Request) {
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (e: unknown) {
-    // Default message for frontend
     let errorMessage = "Something went wrong while updating quantity. Please try again.";
 
     if (e instanceof Error) {
-      // Friendly messages for common errors
       if (e.message.includes("foreign key")) {
         errorMessage = "Cannot update this item due to database restrictions.";
       } else if (e.message.includes("syntax error")) {
         errorMessage = "There was a problem with the database query.";
       } else {
-        errorMessage = e.message; // fallback to actual error
+        errorMessage = e.message;
       }
     }
 
-    // Log full error for debugging
     console.error("❌ PATCH /api/cartitems error:", e);
 
-    // Return structured JSON so frontend can display a toast or message
+
     return new Response(
       JSON.stringify({ error: errorMessage }),
       { status: 500, headers: { "Content-Type": "application/json" } }
