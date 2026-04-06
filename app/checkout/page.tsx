@@ -8,7 +8,7 @@ import { clearCart } from '@/redux/slices/cartslice';
 // import { setOrder } from '@/redux/slices/orderSlice';
 import { RootState } from '@/redux/store';
 import { Order } from '@/types/order';
-import { useUser } from "@clerk/nextjs";
+import { useClerk, useUser } from "@clerk/nextjs";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,6 +18,7 @@ const Checkout = () => {
     const { cart, discount } = useSelector((state: RootState) => state.cart);
     const router = useRouter();
     const dispatch = useDispatch();
+    const { openSignIn } = useClerk();
 
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -36,7 +37,11 @@ const Checkout = () => {
 
     useEffect(() => {
         if (!isLoaded) return;
-        // if (!isSignedIn) router.replace('/sign-in?redirect_url=/checkout');
+
+        if (!isSignedIn) {
+            openSignIn();
+            return;
+        }
 
     }, [isLoaded, isSignedIn, router]);
 
